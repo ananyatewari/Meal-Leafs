@@ -30,3 +30,4 @@ Design: Figma (Prototype Link)
 Brand Logo: BrandCrowd
 
 Images: Sourced from Pinterest, Google
+

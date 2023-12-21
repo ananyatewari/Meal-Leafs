@@ -9,6 +9,10 @@
     margin: 0%;
 }
 
+body {
+    user-select: none;
+}
+
 header {
     display: flex;
     background-color: black;
@@ -38,7 +42,7 @@ header span {
 
 header img{
     border-radius: 50%;
-    height: 3.5vw;
+    height: 4vw;
     display: flex;
 }
 
@@ -52,6 +56,7 @@ section#home {
     height: fit-content;
     width: 100%;
     display: flex;
+    text-shadow: 0px 0px 2px black;
 }
 
 section#home span:nth-of-type(1) {
@@ -160,6 +165,7 @@ div#get-ready div#ready {
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: slow-entry 5s;
 }
 
 div#search-more {
@@ -241,6 +247,8 @@ div#card{
     flex-direction: column;
     justify-content: center;
     box-shadow: 0px 0px 10px #9d3e03;
+    animation: appear-top 5.5s forwards;
+
 }
 
 div#results {
@@ -257,15 +265,15 @@ div#results div#cards {
     background-color: rgb(252, 226, 197);
     height: fit-content;
     width: fit-content;
-    padding: 1vw 2vw 2vw 2vw;
+    padding: 2vw 2vw 2vw 2vw;
     border-radius: 10%;
     text-align: center;
-    margin: 70px 0px 70px 0px;
+    margin: 3vw 0vw 3vw 0vw;
     box-shadow: 0px 0px 10px #9d3e03;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin: 1vw;
+    justify-content: space-evenly;
 }
 
 div#card h3, div#results h3 {
@@ -296,7 +304,7 @@ div#view-ing, div#view-ings {
     /* border-radius: 4vw 0vw 4vw 0vw; */
     /* box-shadow: 1px 1px 4px black; */
     text-shadow: 0px 1px black;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 div#view-ing:hover, div#view-ings:hover {
@@ -318,6 +326,7 @@ div#refresh {
     border-radius: 7vw;
     font-size: 1.18rem;
     box-shadow: 1px 1px 10px #eb6a1a;
+    animation: slow-entry 7s forwards;
 }
 
 div#refresh img {
@@ -457,7 +466,12 @@ div#method-pop, div#method-pop-res {
 }
 
 span#close-pop, span#close-pop-res {
+    display: flex;
+    align-self: flex-start;
+    margin-right: 10%;
     font-size: 55px;
+    height: fit-content;
+    width: fit-content;
 }
 
 span#close-pop:hover, span#close-pop-res:hover {
@@ -499,11 +513,12 @@ div#search input {
     border-radius: 3vw;
     width: 30vw;
     height: 3vw;
-    font-size: 1.5vw;
+    font-size: 2vw;
     padding: 1rem;
     box-shadow: 0px 0px 13px #eb6a1a;
     margin: 0px 0px 20px 0px;
     text-align: center;
+    animation: appear-top 5s forwards;
 }
 
 div#message {
@@ -522,6 +537,22 @@ div#box {
 
 div#box b {
     color: red;
+}
+
+.youtube {
+    margin-right: 10%;
+    font-family: "Teko";
+    font-size: large;
+    align-items: center;
+    cursor: pointer;
+    display: none;
+}
+
+.youtube img {
+    position: relative;
+    left: 5px;
+    top: 4px;
+    height: 25px;
 }
 
 @keyframes scroll {
@@ -546,3 +577,159 @@ html, body {
     scroll-behavior: smooth;
 }
 
+.parent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 900px) {
+    section#home span:nth-of-type(1) {
+        font-size: 10vh;
+        top: 6vh;
+    }
+    div#get-ready div#ready {
+        font-size: 4.5vh;
+    }
+    div#search-more {
+        margin-top: 1.8vh;
+    }
+    div#randomly-generated h2 {
+        font-size: 5.4vh;
+        margin: 4vh 0vh 0.7vh 0vh;
+    }
+    h2#explore {
+        font-size: 5.8vh;
+        margin-bottom: -12vh;
+    }
+    div#box {
+        font-size: 6vh;
+        margin: -4vh 0vh 2vh 0vh;
+    }
+    div#card h3, div#results h3 {
+        font-size: 2.8vh;
+    }    
+    div#card img, div#results img {
+        height: 30vh;
+        width: 30vh;
+    } 
+    div#search input {
+        font-size: 3vh;
+    }
+    header img{
+        height: 7vh;
+    }
+    div#method-pop, div#method-pop-res {
+        font-size: 2vh;
+    }
+    div#ing-pop div, div#ing-pop-res div {
+        height: 10vh;
+        font-size: 2vh;
+    }
+    div#method-pop, div#method-pop-res {
+        font-size: 2vh;
+    }
+    div#view-ing, div#view-ings {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 700px) {
+    header {
+        overflow: hidden;    
+        width: 100vw;
+    }
+    section#home span:nth-of-type(1) {
+        font-size: 8.5vh;
+    }
+    section#home img {
+        animation: none;
+        animation: appear-top 3.5s forwards;
+        position: relative;
+        margin-left: -60%;
+    }
+    div#get-ready {
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    div#get-ready img {
+        height: 25vh;
+        width: 30vh;
+        margin-top: 2vh;
+    }
+    div#get-ready div#ready {
+        font-size: 2.4vh;
+        width: 100%;
+        height: fit-content;
+    }
+    div#search-more {
+        font-size: 1.5vh;
+        padding: 1vh 3vh 1vh 3vh;
+        margin-bottom: -1vh;
+    }
+    div#randomly-generated h2, h2#explore {
+        font-size: 5vh;
+    }
+    footer span:nth-of-type(1) {
+        line-height: 10vh;
+    }
+    footer span:nth-of-type(2) {
+        font-size: 1.5vh;
+        line-height: 2.3vh;
+    }
+    footer input {
+        height: 4vw;
+        font-size: 1vh;
+        margin-top: 1.5vh;
+    }
+    footer img {
+        height: 20vh;
+        width: 20vh;
+        position: relative;
+        left: 10%;
+    }
+    footer div:nth-of-type(2){
+        text-align: right;
+        font-size: 2vh;
+    }
+    div#method-pop, div#method-pop-res {
+        font-size: 2vh;
+    }
+    div#ing-pop div, div#ing-pop-res div {
+        height: 10vh;
+        font-size: 2vh;
+    }
+    div#popup, div#popup-res {
+        flex-direction: column;
+    }
+    div#column1, div#column1-res {
+        flex-direction: row;
+    }
+    div#youtube-pop, div#youtube-pop-res {
+        display: none;
+    }
+    section#home span:nth-of-type(2) {
+        font-size: 3vh;
+        bottom: 12%;
+    }
+    div#search input {
+        font-size: xx-small;
+        width: 50vw;
+    }
+    .youtube {
+        display: block;
+    }
+    span#close-pop, span#close-pop-res {
+        display: flex;
+    }
+    div#title-pop, div#title-pop-res {
+        display: flex;
+        align-items: center;
+    }
+    div#view-ing, div#view-ings {
+        font-size: 0.8rem;
+        padding: 1vh 2vh 1vh 2vh;
+        margin: 2.3vh 0vh 1.5vh 0vh ;
+    }
+
+}

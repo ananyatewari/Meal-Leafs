@@ -89,6 +89,11 @@ function viewIngredients(info) {
     document.getElementById("title-pop").innerHTML = `<h2>${info.meals["0"].strMeal}</h2>`; 
     document.getElementById("image-pop").innerHTML = `<img src ="${info.meals["0"].strMealThumb}">`; 
     document.getElementById("youtube-pop").innerHTML = `youtube tutorial <br> <iframe src="https://www.youtube.com/embed/${info.meals["0"].strYoutube.slice(-11)}" frameborder="0" allowfullscreen = true></iframe>`; 
+    var path = `https://www.youtube.com/embed/${info.meals["0"].strYoutube.slice(-11)}`;
+    document.getElementById("phone-yt").onclick = () => {
+        console.log("hi")
+        window.open(`${path}}`, "_blank");
+    }
 
     for (let i = 1; i <= 20; i++) {
         const ingredient = info.meals["0"][`strIngredient${i}`];
@@ -213,6 +218,11 @@ function eachIng(info) {
     document.getElementById("title-pop-res").innerHTML = `<h2>${response.meals["0"].strMeal}</h2>`; 
     document.getElementById("image-pop-res").innerHTML = `<img src ="${response.meals["0"].strMealThumb}">`; 
     document.getElementById("youtube-pop-res").innerHTML = `youtube tutorial <br> <iframe src="https://www.youtube.com/embed/${response.meals["0"].strYoutube.slice(-11)}" frameborder="0" allowfullscreen = true></iframe>`; 
+    var path1 = `https://www.youtube.com/embed/${response.meals["0"].strYoutube.slice(-11)}`;
+    document.getElementById("phone-yt1").onclick = () => {
+        console.log("hi")
+        window.open(`${path1}}`, "_blank");
+    }
 
     for (let i = 1; i <= 20; i++) {
         const ingredient = response.meals["0"][`strIngredient${i}`];
@@ -248,3 +258,4 @@ scroll.forEach((scroll) => {
             })
         }
 });
+

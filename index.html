@@ -19,10 +19,12 @@
         <span>Know Meal Leafs ?
             IF NOT, THEN TRY TODAY
         </span>
-        <span>
+        <span id="button">
             <a class="scroll" href="#personalise" style="text-decoration: none; color: white;">Get a personalised meal</a>
         </span>
+        <div id="description">Elevate your culinary experience with our Random Meal Generator, offering delightful surprises. Effortlessly discover recipes through Smart Search, and cook with confidence using detailed recipe information. Powered by MealDB API, Meal Leafs is your gateway to a world of diverse and delicious possibilities in the kitchen 🍽️✨</div>
     </section>
+
 
     <div id="get-ready">
         <div id="slides">
@@ -113,12 +115,15 @@
         <div>
             <img src="./assets/logo.png" alt="" style="border-radius: 70%;">
             <br>
-            <span style="user-select: none;">
+            <span style="user-select: none;" id="api">
                 API sourced from <span id="mealdb" style="font-style: italic; text-decoration: underline; cursor: pointer;">here</span>
             </span>
             </div>
     </footer>
 
+    <div id="loading">
+        <div id="circle"></div>
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>

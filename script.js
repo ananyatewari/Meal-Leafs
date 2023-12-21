@@ -28,10 +28,15 @@ document.getElementById("mealdb").onclick = () => {
 }
 
 document.getElementById("refresh").onclick = () => {
+    load.style.display = "flex"
     randomMeal()
 }
 
+const load = document.getElementById("loading");
+
+load.style.display = "flex";
 randomMeal()
+
 function randomMeal() {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
     .then((response) => {
@@ -41,8 +46,12 @@ function randomMeal() {
         // console.log(response); 
         generateCard(response);
         viewIngredients(response);
+        load.style.display = "none";
+
     })
     .catch((error) => {
+        load.style.display = "flex";
+        load.style.display = "none";
         console.log(error)
     })
 }
@@ -52,6 +61,8 @@ const closePopup = document.getElementById("close-pop");
 const close = document.getElementById("close");
 
 function generateCard(info) {
+    load.style.display = "flex";
+
     const randomCard = document.getElementById("card");
     // console.log(info.meals["0"]);
 
@@ -68,21 +79,28 @@ function generateCard(info) {
     ingredients.innerText = "View Ingredients"
 
     ingredients.onclick = () => {
+        load.style.display = "flex";
         close.style.display = "block";
         method.style.display = "flex";
+        load.style.display = "none";
     }
 
     closePopup.onclick = () => {
+        load.style.display = "flex";
         close.style.display = "none";
         method.style.display = "none";
+        load.style.display = "none";
     }
 
     randomCard.appendChild(title);
     randomCard.append(image);
     randomCard.append(ingredients);
+    load.style.display = "none";
+
 }
 
 function viewIngredients(info) {
+    load.style.display = "flex";
     const popup = document.createElement("div");
     // console.log(info.meals["0"]);
     
@@ -112,7 +130,9 @@ function viewIngredients(info) {
         }
       }
 
-      document.getElementById("method-pop").innerText = `${info.meals["0"].strInstructions}`
+    document.getElementById("method-pop").innerText = `${info.meals["0"].strInstructions}`
+    load.style.display = "none";
+
 }
 
 const search = document.getElementById("search-input");
@@ -122,11 +142,15 @@ window.addEventListener("keydown",(press)=>{
     var input = search.value;
     if(press.key == "Enter"){
         if (input){
+            load.style.display = "flex";
             message.innerHTML = "";
             searchDish(input); 
         }
         else {
-           message.innerHTML = `No results found !`
+            load.style.display = "flex";
+            message.innerHTML = `No results found !`
+            load.style.display = "none";
+
         }   
     }
 });
@@ -134,11 +158,15 @@ window.addEventListener("keydown",(press)=>{
 document.getElementById("magnify").onclick = () => {
     var input = search.value;
     if (input){
+        load.style.display = "flex";
         message.innerHTML = "";
         searchDish(input); 
     }
     else {
-       message.innerHTML = `No results found`;
+        load.style.display = "flex";
+        message.innerHTML = `No results found`;
+        load.style.display = "none";
+
     }
 }
 
@@ -152,6 +180,7 @@ function searchDish(dish) {
         box.innerHTML = `Showing results for <b>${dish}</b>`
         // console.log(response);
         searchResults(response);
+        load.style.display = "none";
         // eachIng(response);
     })
     .catch((error) => {
@@ -159,6 +188,7 @@ function searchDish(dish) {
         box.innerHTML = `No results for <b>${dish}</b>`
         results.innerHTML = "";
         console.log(error);
+        load.style.display = "none";
     })
 }
 
@@ -167,7 +197,7 @@ const closeRes = document.getElementById("close-pop-res");
 const results = document.getElementById("results");
 
 function searchResults(info) {
-
+    load.style.display = "flex";
     let a = info.meals.length;
     // console.log(a);
     
@@ -192,17 +222,22 @@ function searchResults(info) {
         results.append(div);
 
         ingredients1.onclick = () => {
+            load.style.display = "flex";
             eachIng(info.meals[i].idMeal)
             close.style.display = "block";
             methodRes.style.display = "flex";
         }
     
         closeRes.onclick = () => {
+            load.style.display = "flex"
             close.style.display = "none";
             methodRes.style.display = "none";
+            load.style.display = "none"
+
         }
     
     }    
+    load.style.display = "none";
 }
 
 function eachIng(info) {
@@ -211,37 +246,39 @@ function eachIng(info) {
         return response.json();
     })
     .then((response) => {
+        load.style.display = "flex"
         // console.log(response)
         // console.log(response.meals["0"]);
         const popup = document.createElement("div");
-    
-    document.getElementById("title-pop-res").innerHTML = `<h2>${response.meals["0"].strMeal}</h2>`; 
-    document.getElementById("image-pop-res").innerHTML = `<img src ="${response.meals["0"].strMealThumb}">`; 
-    document.getElementById("youtube-pop-res").innerHTML = `youtube tutorial <br> <iframe src="https://www.youtube.com/embed/${response.meals["0"].strYoutube.slice(-11)}" frameborder="0" allowfullscreen = true></iframe>`; 
-    var path1 = `https://www.youtube.com/embed/${response.meals["0"].strYoutube.slice(-11)}`;
-    document.getElementById("phone-yt1").onclick = () => {
-        console.log("hi")
-        window.open(`${path1}}`, "_blank");
-    }
-
-    for (let i = 1; i <= 20; i++) {
-        const ingredient = response.meals["0"][`strIngredient${i}`];
-        const amount = response.meals["0"][`strMeasure${i}`];
-    
-        if (ingredient) {
-          let ingdiv = document.createElement("div");
-          let ingpic = document.createElement("img");
-          ingpic.src = `https://www.themealdb.com/images/ingredients/${ingredient}-Small.png`;
-          let ingtext = document.createElement("span");
-          ingtext.innerHTML = `${ingredient}<br>${amount}`;
-          ingdiv.appendChild(ingpic);
-          ingdiv.appendChild(ingtext);
-    
-          document.getElementById("ing-pop-res").appendChild(ingdiv);
+        
+        document.getElementById("title-pop-res").innerHTML = `<h2>${response.meals["0"].strMeal}</h2>`; 
+        document.getElementById("image-pop-res").innerHTML = `<img src ="${response.meals["0"].strMealThumb}">`; 
+        document.getElementById("youtube-pop-res").innerHTML = `youtube tutorial <br> <iframe src="https://www.youtube.com/embed/${response.meals["0"].strYoutube.slice(-11)}" frameborder="0" allowfullscreen = true></iframe>`; 
+        var path1 = `https://www.youtube.com/embed/${response.meals["0"].strYoutube.slice(-11)}`;
+        document.getElementById("phone-yt1").onclick = () => {
+            console.log("hi")
+            window.open(`${path1}}`, "_blank");
         }
-      }
-
-      document.getElementById("method-pop-res").innerHTML = `${response.meals["0"].strInstructions}`
+        
+        for (let i = 1; i <= 20; i++) {
+            const ingredient = response.meals["0"][`strIngredient${i}`];
+            const amount = response.meals["0"][`strMeasure${i}`];
+            
+            if (ingredient) {
+                let ingdiv = document.createElement("div");
+                let ingpic = document.createElement("img");
+                ingpic.src = `https://www.themealdb.com/images/ingredients/${ingredient}-Small.png`;
+                let ingtext = document.createElement("span");
+                ingtext.innerHTML = `${ingredient}<br>${amount}`;
+                ingdiv.appendChild(ingpic);
+                ingdiv.appendChild(ingtext);
+                
+                document.getElementById("ing-pop-res").appendChild(ingdiv);
+            }
+        }
+        
+        document.getElementById("method-pop-res").innerHTML = `${response.meals["0"].strInstructions}`
+        load.style.display = "none";
     })
     .catch((error) => {
         console.log(error);
@@ -258,4 +295,3 @@ scroll.forEach((scroll) => {
             })
         }
 });
-

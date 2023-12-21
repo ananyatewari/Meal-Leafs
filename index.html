@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Leafs</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./assets/logo.png" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <span><a class="scroll" href="#home" style="text-decoration: none; color: white;"><img src="./assets/logo.png" alt=""></a></span>
+        <span>Meal Leafs</span>
+        <span><a class="scroll" href="#footer"><img src="./assets/user.png" alt=""></a></span>
+    </header>
+    <section id="home">
+        <img src="./assets/home.jpg" alt="">
+        <span>Know Meal Leafs ?
+            IF NOT, THEN TRY TODAY
+        </span>
+        <span>
+            <a class="scroll" href="#personalise" style="text-decoration: none; color: white;">Get a personalised meal</a>
+        </span>
+    </section>
+
+    <div id="get-ready">
+        <div id="slides">
+            <img src="./assets/slider2.webp" alt="">
+        </div>
+
+        <div id="ready">
+            GET READY FOR A WHIMSICAL GETAWAY
+            <a class="scroll" href="#search" style="text-decoration: none;">
+            <div id="search-more">
+                    Search for more items
+            </div></a>
+        </div>
+    </div>
+
+    <div id="randomly-generated">
+        <h2 id="personalise">Here's your meal for the day !</h2>
+        <div id="card">
+        </div>
+        <div id="refresh">
+            Didn't like this option ? 
+            <img src="./assets/refresh.png" alt="">
+        </div>
+    </div>
+
+    <div id="close"></div>
+    <div id="popup">
+        <div id="column1">
+            <div id="title-pop"></div>
+            <div id="image-pop"></div>
+            <div id="youtube-pop"></div>
+        </div> 
+
+        <div id="column2">
+            <div id="ing-pop"></div>
+            <div id="method-pop"></div>
+        </div>
+        <span id="close-pop">&#x2715;</span>
+
+    </div>
+
+
+    <h2 id="explore">WANNA EXPLORE MORE ? </h2>
+    <div id="search">
+        <input id="search-input" type="text" placeholder="Search what you're looking for..">
+        <img src="./assets/magnifying-glass.png" alt="" height="40px" id="magnify">
+    </div>
+
+    <div id="box"></div>
+    <div id="results"></div>
+
+    <div id="popup-res">
+        <div id="column1-res">
+            <div id="title-pop-res"></div>
+            <div id="image-pop-res"></div>
+            <div id="youtube-pop-res"></div>
+        </div> 
+
+        <div id="column2-res">
+            <div id="ing-pop-res"></div>
+            <div id="method-pop-res"></div>
+        </div>
+        <span id="close-pop-res">&#x2715;</span>
+
+    </div>
+
+    <div id="message"></div>
+
+    <footer id="footer">
+        <div>
+            <span style="font-family: 'Teko'; font-size: 12vh;">
+                Meal Leafs
+            </span>
+            A project by Ananya Tewari
+
+            <span style="font-family: 'Bungee'; color: #f06712;">
+                Sign up for our Newsletter!
+            </span>
+            <input type="text" placeholder="Enter your email address">
+
+        </div>
+        <div>
+            <img src="./assets/logo.png" alt="" style="border-radius: 70%;">
+            <br>
+            <span style="user-select: none;">
+                API sourced from <span id="mealdb" style="font-style: italic; text-decoration: underline; cursor: pointer;">here</span>
+            </span>
+            </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>

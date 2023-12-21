@@ -65,6 +65,7 @@ section#home span:nth-of-type(1) {
     margin-right: 13vw;
     animation: appear-top 3s forwards;
     margin-left: 1%;
+    line-height: 17vh;
 }
 
 @keyframes appear-top {
@@ -167,6 +168,7 @@ div#get-ready div#ready {
     flex-direction: column;
     align-items: center;
     animation: slow-entry 5s;
+    line-height: 8vh;
 }
 
 div#search-more {
@@ -184,6 +186,7 @@ div#search-more {
     text-align: center;
     font-size: 1.7vw;
     animation: float 3s infinite forwards;
+    line-height: 2vh;
 }
 
 footer {
@@ -689,13 +692,19 @@ div#circle {
     }
 }
 
+@media (max-width: 500px) {
+    section#home span:nth-of-type(1) {
+        line-height: 9vh;
+    }
+}
+
 @media (max-width: 800px) {
     header {
         overflow: hidden;    
         width: 100vw;
     }
     section#home span:nth-of-type(1) {
-        font-size: 8.5vh;
+        font-size: 7vh;
     }
     section#home img {
         animation: none;

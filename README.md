@@ -2,7 +2,9 @@
 Discover an array of delectable dishes at Meal Leafs! Made using HTML, CSS and JavaScript, Meal Leafs is here to inspire your culinary adventures. With a random meal generator, powerful search functionality, and detailed recipe information, users can find the perfect dish for any possible occasion.
 
 
-![logo](https://github.com/ananyatewari/Meal-Leafs/assets/144683235/2c7a5a55-5b36-4a71-92ca-a8432780ce17)
+![ezgif-5-95c5fe1aed](https://github.com/ananyatewari/Meal-Leafs/assets/144683235/390be23a-71d9-438f-801f-2d7cd71ed55f)
+
+
 
 # Features
 

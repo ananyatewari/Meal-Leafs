@@ -25,7 +25,7 @@ Meal Leafs utilizes the MealDB API to fetch a diverse range of recipes. The API 
 ## Tools Used
 Editor: Visual Studio Code
 
-Design: Figma (Prototype Link)
+Design: Figma Prototype Link (https://www.figma.com/file/0WUHobjkEi0jol1bibwSuD/Meal-Leafs---Ananya-Tewari?type=design&node-id=0%3A1&mode=design&t=mRHksWkP1VttSJnr-1)
 
 Brand Logo: BrandCrowd
 

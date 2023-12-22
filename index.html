@@ -9,11 +9,14 @@
 </head>
 <body>
 
+    <!-- this is the header section with 3 icons with display flex -->
     <header>
         <span><a class="scroll" href="#home" style="text-decoration: none; color: white;"><img src="./assets/logo.png" alt=""></a></span>
         <span>Meal Leafs</span>
         <span><a class="scroll" href="#footer"><img src="./assets/user.png" alt=""></a></span>
     </header>
+
+    <!-- home section with the description and animated button -->
     <section id="home">
         <img src="./assets/home.jpg" alt="">
         <span>Know Meal Leafs ?
@@ -25,7 +28,7 @@
         <div id="description">Elevate your culinary experience with our Random Meal Generator, offering delightful surprises. Effortlessly discover recipes through Smart Search, and cook with confidence using detailed recipe information. Powered by MealDB API, Meal Leafs is your gateway to a world of diverse and delicious possibilities in the kitchen 🍽️✨</div>
     </section>
 
-
+    <!-- the image gallery space with flashing images in every 2.8s -->
     <div id="get-ready">
         <div id="slides">
             <img src="./assets/slider2.webp" alt="">
@@ -40,16 +43,21 @@
         </div>
     </div>
 
+    <!-- area where the randomly generated meal comes up -->
     <div id="randomly-generated">
         <h2 id="personalise">Here's your meal for the day !</h2>
+        <!-- the elements for this random meal are created in the javascript file only -->
         <div id="card">
         </div>
+
         <div id="refresh">
             Didn't like this option ? 
+            <!-- button to refresh the meal to get another option -->
             <img src="./assets/refresh.png" alt="">
         </div>
     </div>
 
+    <!-- this is for the popup for randomly generated meal -->
     <div id="close"></div>
     <div id="popup">
         <div id="column1">
@@ -70,13 +78,16 @@
     </div>
 
 
+    <!-- this is the search button to look for more categories of food items -->
     <h2 id="explore">WANNA EXPLORE MORE ? </h2>
     <div id="search">
         <input id="search-input" type="search" placeholder="Search what you're looking for..">
         <img src="./assets/magnifying-glass.png" alt="" height="40px" id="magnify">
     </div>
 
+    <!-- displays search results with a short message-->
     <div id="box"></div>
+    <!-- elements are created in js file -->
     <div id="results"></div>
 
     <div id="popup-res">
@@ -92,6 +103,7 @@
         </div>
         <span class="parent">
             <span id="close-pop-res">&#x2715;</span>
+            <!-- this only comes up on phones -->
             <span id="phone-yt1" class="youtube">Watch on YouTube <img src="./assets/youtube.png" alt=""></span>
         </span>
 
@@ -99,6 +111,7 @@
 
     <div id="message"></div>
 
+    <!-- all about the footer of the web page with the logo and some general information -->
     <footer id="footer">
         <div>
             <span style="font-family: 'Teko'; font-size: 12vh;">
@@ -121,6 +134,7 @@
             </div>
     </footer>
 
+    <!-- this is a small loader that displays only when the page is loading -->
     <div id="loading">
         <div id="circle"></div>
     </div>

@@ -1,3 +1,4 @@
+//this is for a random image gallery that flashes images at an interval of 2.8s
 const slides = [
     "./assets/slider1.jpeg",
     "./assets/slider2.webp",
@@ -16,17 +17,18 @@ const slider = document.getElementById("slides");
 function slideShow(slides) {
     setInterval(() => {
         let a = Math.floor(Math.random() * 12);
-        slider.innerHTML = `<img src = "${slides[a]}">`;
-        
+        slider.innerHTML = `<img src = "${slides[a]}">`; //picks out the image source randomly from the given array
     }, 2800);
 
 }
 slideShow(slides);
 
+//this is present at the footer to give credits to mealdb
 document.getElementById("mealdb").onclick = () => {
     window.open("https://www.themealdb.com/", "_blank");
 }
 
+//this is to generate another random meal on clicking the refresh button
 document.getElementById("refresh").onclick = () => {
     load.style.display = "flex"
     randomMeal()
@@ -37,6 +39,7 @@ const load = document.getElementById("loading");
 load.style.display = "flex";
 randomMeal()
 
+//the first api to generate a random meal 
 function randomMeal() {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
     .then((response) => {
@@ -44,8 +47,8 @@ function randomMeal() {
     })
     .then((response) => {
         // console.log(response); 
-        generateCard(response);
-        viewIngredients(response);
+        generateCard(response); //gets meal
+        viewIngredients(response); //gets recipe and ingredients
         load.style.display = "none";
 
     })
@@ -60,6 +63,8 @@ const method = document.getElementById("popup");
 const closePopup = document.getElementById("close-pop");
 const close = document.getElementById("close");
 
+//this is related to the first api
+//helps in creating cards for meals that come up
 function generateCard(info) {
     load.style.display = "flex";
 
@@ -99,6 +104,8 @@ function generateCard(info) {
 
 }
 
+//this is to view the ingredients and detailed recipe of each dish that comes up in the card
+//again a aprt of first api
 function viewIngredients(info) {
     load.style.display = "flex";
     const popup = document.createElement("div");
@@ -106,13 +113,18 @@ function viewIngredients(info) {
     
     document.getElementById("title-pop").innerHTML = `<h2>${info.meals["0"].strMeal}</h2>`; 
     document.getElementById("image-pop").innerHTML = `<img src ="${info.meals["0"].strMealThumb}">`; 
+    // youtube link/video part
+    //slice -11 picks out 11 characters from the back (the video id)
     document.getElementById("youtube-pop").innerHTML = `youtube tutorial <br> <iframe src="https://www.youtube.com/embed/${info.meals["0"].strYoutube.slice(-11)}" frameborder="0" allowfullscreen = true></iframe>`; 
+    //making use of the video id to create the embeded link for i frames
     var path = `https://www.youtube.com/embed/${info.meals["0"].strYoutube.slice(-11)}`;
+
+    //only for mobile phone view
     document.getElementById("phone-yt").onclick = () => {
-        console.log("hi")
         window.open(`${path}}`, "_blank");
     }
 
+    //there are a total of 20 ingredients at max so I am running a loop for that only
     for (let i = 1; i <= 20; i++) {
         const ingredient = info.meals["0"][`strIngredient${i}`];
         const amount = info.meals["0"][`strMeasure${i}`];
@@ -138,23 +150,20 @@ function viewIngredients(info) {
 const search = document.getElementById("search-input");
 const message = document.getElementById("message");
 
+//the user can either press down the enter button or click on the search button 
+//to start searching for dishes related to the entered input
 window.addEventListener("keydown",(press)=>{
     var input = search.value;
-    if(press.key == "Enter"){
+    if(press.key == "Enter"){ //check if the key pressed is the enter key or not
         if (input){
             load.style.display = "flex";
             message.innerHTML = "";
             searchDish(input); 
         }
-        else {
-            load.style.display = "flex";
-            message.innerHTML = `No results found !`
-            load.style.display = "none";
-
-        }   
     }
 });
 
+//this is for the search button when it's clicked
 document.getElementById("magnify").onclick = () => {
     var input = search.value;
     if (input){
@@ -162,14 +171,9 @@ document.getElementById("magnify").onclick = () => {
         message.innerHTML = "";
         searchDish(input); 
     }
-    else {
-        load.style.display = "flex";
-        message.innerHTML = `No results found`;
-        load.style.display = "none";
-
-    }
 }
 
+//this is the second api to generate a result based on the user's search entry
 function searchDish(dish) {
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${dish}`)
     .then((response) => {
@@ -196,6 +200,8 @@ const methodRes = document.getElementById("popup-res");
 const closeRes = document.getElementById("close-pop-res");
 const results = document.getElementById("results");
 
+//this gives out the cards as search results (just like in the randomly generated meal)
+//gives name, image and view ingredients option
 function searchResults(info) {
     load.style.display = "flex";
     let a = info.meals.length;
@@ -240,6 +246,9 @@ function searchResults(info) {
     load.style.display = "none";
 }
 
+//this is the use of the 3rd api to get meal details
+//since we don't get the ingredients from the second api, we make use of the id of the dish
+//to get its recipe, ingredients, youtube
 function eachIng(info) {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${info}`)
     .then((response) => {
@@ -253,13 +262,18 @@ function eachIng(info) {
         
         document.getElementById("title-pop-res").innerHTML = `<h2>${response.meals["0"].strMeal}</h2>`; 
         document.getElementById("image-pop-res").innerHTML = `<img src ="${response.meals["0"].strMealThumb}">`; 
+        // youtube link/video part
+        //slice -11 picks out 11 characters from the back (the video id)
         document.getElementById("youtube-pop-res").innerHTML = `youtube tutorial <br> <iframe src="https://www.youtube.com/embed/${response.meals["0"].strYoutube.slice(-11)}" frameborder="0" allowfullscreen = true></iframe>`; 
+        //making use of the video id to create the embeded link for i frames
         var path1 = `https://www.youtube.com/embed/${response.meals["0"].strYoutube.slice(-11)}`;
+
+        //phone youtube link
         document.getElementById("phone-yt1").onclick = () => {
-            console.log("hi")
             window.open(`${path1}}`, "_blank");
         }
         
+        //there are a total of 20 ingredients at max so I am running a loop for that only
         for (let i = 1; i <= 20; i++) {
             const ingredient = response.meals["0"][`strIngredient${i}`];
             const amount = response.meals["0"][`strMeasure${i}`];
@@ -285,6 +299,7 @@ function eachIng(info) {
     })
 }
 
+//this is to enable smooth scroll behaviour throughout the document to reach a clean and finished look with the hyperlinking going on
 var scroll = document.querySelectorAll(".scroll");
 
 scroll.forEach((scroll) => {
